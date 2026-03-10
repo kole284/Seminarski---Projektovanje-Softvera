@@ -1,0 +1,37 @@
+# Razlike između analize mog seminarskog i analize primera seminarskog
+
+1. **Struktura slojeva/projekata**
+   - Moj projekat koristi četiri glavna sloja/projekta: Models, Broker, Server, Client.
+   - Primer koristi: Common, DBBroker, SistemskeOperacije, Server, Forme.
+   - Kod mene je poslovna logika integrisana u Server sloj (Controller), dok primer ima poseban sloj SistemskeOperacije za svaku poslovnu operaciju (SO pattern).
+
+2. **Organizacija poslovne logike**
+   - Moj sistem koristi Controller u Server sloju za poslovnu logiku.
+   - Primer koristi zasebne klase za svaku sistemsku operaciju (npr. LoginSO, SacuvajOsobuSO) i apstraktnu bazu SOBase (Template Method pattern).
+
+3. **Modeli i komunikacija**
+   - Kod mene su modeli i DTO-ovi u Models projektu, a komunikacija se vrši preko Request/Response objekata.
+   - U primeru su modeli i komunikacioni objekti u zajedničkom sloju Common (Domen, Komunikacija).
+
+4. **Data Access sloj**
+   - Moj Broker koristi Repository pattern i Template Method za generičke CRUD operacije.
+   - Primer ima DBBroker sa Broker klasom i posebnom DbConnection klasom.
+
+5. **Klijent**
+   - Kod mene je Client WinForms aplikacija sa CommunicationHelper singletonom za TCP komunikaciju.
+   - U primeru je Forme sloj sa GUI kontrolerima i UserControls za modularnost UI-a.
+
+6. **Sistemske operacije**
+   - Moj sistem nema eksplicitno izdvojene sistemske operacije kao posebne klase.
+   - Primer eksplicitno odvaja svaku poslovnu operaciju u posebnu klasu (SO pattern).
+
+7. **Dokumentacija i SQL**
+   - Moj projekat ima poseban folder za SQL skripte i detaljnu tehničku dokumentaciju.
+   - Primer to ne pominje eksplicitno.
+
+8. **Tehnologije**
+   - Moj projekat navodi konkretne tehnologije (npr. .NET 10.0, System.Text.Json/BinaryFormatter).
+   - Primer je opštiji po pitanju tehnologija.
+
+**Zaključak:**
+Moj projekat ima jasnu separaciju slojeva, ali je poslovna logika više integrisana u server, dok primer koristi dodatni sloj za sistemske operacije i još više razdvaja odgovornosti. Primer je više orijentisan na SO pattern, dok moj projekat koristi Controller pristup.
